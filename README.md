@@ -88,6 +88,16 @@ V2 Results:
 
 ---
 
+### Confusion Matrix (Baseline)
+
+![Baseline Confusion Matrix](reports/figures/confusion_matrix_test.png)
+
+### Confusion Matrix (V2)
+
+![V2 Confusion Matrix](reports/figures/confusion_matrix_test_v2.png)
+
+---
+
 ## Detailed Model Report
 
 A detailed analysis of model performance, comparison between baseline and improved models, confusion matrix interpretation, and recommendations for future improvements can be found here:
