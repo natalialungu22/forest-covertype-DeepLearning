@@ -12,7 +12,7 @@ def main() -> None:
     ROOT = Path(__file__).resolve().parents[1]
 
     processed_dir = ROOT / "data" / "processed"
-    model_path = ROOT / "models" / "best_model.keras"
+    model_path = ROOT / "models" / "best_model_v2.keras"
 
     reports_dir = ROOT / "reports" / "figures"
     reports_dir.mkdir(parents=True, exist_ok=True)
@@ -41,7 +41,7 @@ def main() -> None:
     plt.title("Confusion Matrix (Test Set)")
     plt.tight_layout()
 
-    out_path = reports_dir / "confusion_matrix_test.png"
+    out_path = reports_dir / "confusion_matrix_test_v2.png"
     plt.savefig(out_path, dpi=200)
     plt.close()
 
