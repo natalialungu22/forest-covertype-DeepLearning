@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# ML artifacts
+models/
+reports/
+logs/
+
+# Data 
+data/raw/
+data/processed/
+*.parquet
+*.joblib
+*.pkl
