@@ -8,6 +8,17 @@ from sklearn.utils.class_weight import compute_class_weight
 
 from .modeling import build_mlp_v2
 
+from .config import (
+    RANDOM_STATE,
+    BATCH_SIZE,
+    V2_EPOCHS,
+    EARLY_STOPPING_PATIENCE_V2,
+    REDUCE_LR_PATIENCE,
+    REDUCE_LR_FACTOR,
+    MIN_LR,
+)
+
+
 
 def load_processed(processed_dir: Path):
     X_train = np.load(processed_dir / "X_train.npy")
@@ -34,7 +45,7 @@ def main():
     models_dir = ROOT / "models"
     models_dir.mkdir(parents=True, exist_ok=True)
 
-    tf.keras.utils.set_random_seed(42)
+    tf.keras.utils.set_random_seed(RANDOM_STATE)
 
     X_train, X_val, X_test, y_train, y_val, y_test = load_processed(processed_dir)
 
@@ -44,8 +55,8 @@ def main():
     class_weights = make_class_weights(y_train)
 
     callbacks = [
-        tf.keras.callbacks.EarlyStopping(monitor="val_loss", patience=6, restore_best_weights=True),
-        tf.keras.callbacks.ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=2, min_lr=1e-6),
+        tf.keras.callbacks.EarlyStopping(monitor="val_loss", patience=EARLY_STOPPING_PATIENCE_V2, restore_best_weights=True),
+        tf.keras.callbacks.ReduceLROnPlateau(monitor="val_loss", factor=REDUCE_LR_FACTOR, patience=REDUCE_LR_PATIENCE, min_lr=MIN_LR),
         tf.keras.callbacks.ModelCheckpoint(
             filepath=str(models_dir / "best_model_v2.keras"),
             monitor="val_loss",
@@ -56,8 +67,8 @@ def main():
     history = model.fit(
         X_train, y_train,
         validation_data=(X_val, y_val),
-        epochs=50,
-        batch_size=1024,
+        epochs=V2_EPOCHS,
+        batch_size=BATCH_SIZE,
         class_weight=class_weights,
         callbacks=callbacks,
         verbose=1
