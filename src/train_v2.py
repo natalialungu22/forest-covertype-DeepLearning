@@ -91,6 +91,8 @@ def plot_history_from_csv(csv_path: Path, figures_dir: Path) -> None:
         print("CSV history is empty (no completed epochs).")
         return
 
+    epochs = range(1, len(df) + 1,5)  # Plot every 5 epochs for readability
+
     # Loss
     plt.figure()
     plt.plot(df["loss"])
@@ -100,6 +102,7 @@ def plot_history_from_csv(csv_path: Path, figures_dir: Path) -> None:
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
     plt.legend(["train", "val"])
+    plt.xticks(epochs)
     plt.tight_layout()
     plt.savefig(figures_dir / "training_history_v2_loss.png", dpi=200)
     plt.close()
@@ -114,6 +117,7 @@ def plot_history_from_csv(csv_path: Path, figures_dir: Path) -> None:
     plt.xlabel("Epoch")
     plt.ylabel("Accuracy")
     plt.legend(["train", "val"])
+    plt.xticks(epochs)
     plt.tight_layout()
     plt.savefig(figures_dir / "training_history_v2_acc.png", dpi=200)
     plt.close()
