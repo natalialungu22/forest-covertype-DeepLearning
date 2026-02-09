@@ -1,12 +1,15 @@
----
+# Forest CoverType Deep Learning
 
 ## Project Workflow
 
 ### 1. Exploratory Data Analysis (EDA)
+
 Notebook:
+
 - `notebooks/01_eda_preprocess.ipynb`
 
 Steps included:
+
 - dataset inspection
 - missing value check
 - duplicate row check
