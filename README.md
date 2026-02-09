@@ -98,6 +98,20 @@ V2 Results:
 
 ---
 
+### Key Insights
+
+- Model V2 achieved **86.7% test accuracy**, significantly improving over the baseline model (~79.7%).
+
+- Validation accuracy increased steadily and plateaued after ~40 epochs, indicating stable convergence.
+
+- Most misclassifications occurred between classes **0 and 1**, suggesting these cover types share similar environmental features.
+
+- Minority classes (such as class 3 and class 4) achieved high recall but lower precision, meaning the model detects them well but sometimes confuses them with other classes.
+
+- Using **class weights** improved performance on underrepresented classes.
+
+---
+
 ## Detailed Model Report
 
 A detailed analysis of model performance, comparison between baseline and improved models, confusion matrix interpretation, and recommendations for future improvements can be found here:
